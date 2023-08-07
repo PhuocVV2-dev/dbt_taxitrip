@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: dwh_dbt_model
+    description: "A dwh yellow dbt model"
+    columns:
+      - name: trip_id
+        description: "The pre-check trip_id for this table"
+        tests:
+          - unique:
+          - not_null
+
