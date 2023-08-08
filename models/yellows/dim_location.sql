@@ -1,8 +1,10 @@
- SELECT distinct
-        md5(pulocationid) as pickup_loc_id,
-        pulocationid as pickup_loc,
+{{ config(materialized='table') }}
 
-        md5(dolocationid) as dropoff_loc_id,
-        dolocationid as dropoff_loc
+SELECT DISTINCT
+    pulocationid AS pickup_loc,
+    dolocationid AS dropoff_loc,
 
-    FROM {{ref("stg_yellow__taxi_trip_data")}}
+    md5(pulocationid) AS pickup_loc_id,
+    md5(dolocationid) AS dropoff_loc_id
+
+FROM {{ ref("stg_yellow__taxi_trip_data") }}
