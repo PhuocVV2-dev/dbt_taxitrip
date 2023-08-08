@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_yellows__taxi_trip_data
+    description: "A test staging model"
+    columns:
+      - name: vendorid
+        tests:
+          - not_null
